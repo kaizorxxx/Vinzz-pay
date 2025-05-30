@@ -1,874 +1,393 @@
-<!--
-   Created By Kai
-   Contact https://wa.me/6282126446272
-   Repost By Kaizo
-   Contact https://wa.me/6285167345215
-  
-  CHANEL KAI
-   > https://whatsapp.com/channel/0029VanrndJICVfcrjFr3x2R
-  CHANEL KAIZO
-   > https://whatsapp.com/channel/0029VazCKyL4Y9lq0eKtsl2c
--->
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Payment Hub</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>lynea AI Chat Bot</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-    :root {
-      --primary: #4361ee;
-      --primary-dark: #3a56d4;
-      --secondary: #06d6a0;
-      --light: #f8f9fa;
-      --dark: #212529;
-      --danger: #ef476f;
-      --warning: #ffd166;
-      --info: #118ab2;
-      --dana: #0081FF;
-      --gopay: #00AA13;
-      --ovo: #4C2F9B;
-      --qris: #EE1C25;
-      --linkaja: #EE1C25;
-      --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
-      --shadow-md: 0 5px 15px rgba(0,0,0,0.07);
-      --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
     }
     body {
-      background: linear-gradient(135deg, #4361ee 0%, #7209b7 100%);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      color: var(--dark);
-    }
-    .container {
-      background-color: var(--light);
-      border-radius: 24px;
-      box-shadow: var(--shadow-lg);
-      width: 100%;
-      max-width: 550px;
-      overflow: hidden;
-      position: relative;
-    }
-    .header {
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
-      padding: 30px 20px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .header::before {
-      content: '';
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      top: -100px;
-      left: -100px;
-    }
-    .header::after {
-      content: '';
-      position: absolute;
-      width: 150px;
-      height: 150px;
-      background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      bottom: -75px;
-      right: -75px;
-    }
-    .header h1 {
-      font-size: 32px;
-      font-weight: 700;
-      color: white;
-      position: relative;
-      z-index: 1;
-      margin-bottom: 10px;
-    }
-    .header p {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 16px;
-      position: relative;
-      z-index: 1;
-    }
-    .content {
-      padding: 30px;
-    }
-    .section-title {
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--dark);
-      margin-bottom: 25px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .section-title i {
-      color: var(--primary);
-    }
-    .payment-methods {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-bottom: 30px;
-    }
-    @media (max-width: 500px) {
-      .payment-methods {
-        grid-template-columns: 1fr;
-      }
-    }
-    .method {
-      background-color: white;
-      border-radius: 16px;
-      padding: 20px;
+      font-family: 'Inter', sans-serif;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      transition: var(--transition);
-      box-shadow: var(--shadow-sm);
-      border: 2px solid transparent;
-      position: relative;
-      overflow: hidden;
-      height: 150px;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+      color: #1e293b;
     }
-    .method::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      transform: translateY(-100%);
-      transition: var(--transition);
-    }
-    .method[data-type="dana"]::before {
-      background-color: var(--dana);
-    }
-    .method[data-type="gopay"]::before {
-      background-color: var(--gopay);
-    }
-    .method[data-type="ovo"]::before {
-      background-color: var(--ovo);
-    }
-    .method[data-type="qris"]::before {
-      background-color: var(--qris);
-    }
-    .method:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
-    }
-    .method:hover::before {
-      transform: translateY(0);
-    }
-    .method.active {
-      border-color: var(--primary);
-      box-shadow: 0 8px 20px rgba(67, 97, 238, 0.15);
-    }
-    .method.active::before {
-      transform: translateY(0);
-    }
-    .method-icon {
-      width: 70px;
-      height: 70px;
-      margin-bottom: 15px;
+    header {
       display: flex;
-      justify-content: center;
       align-items: center;
-      transition: var(--transition);
+      padding: 1rem 1.5rem;
+      background: linear-gradient(135deg, #f8fafc, #cbd5e1);
+      border-bottom: 1px solid #cbd5e1;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      user-select: none;
     }
-    .method.active .method-icon {
-      transform: scale(1.1);
+    header h1 {
+      font-weight: 700;
+      font-size: 1.5rem;
+      background: linear-gradient(90deg, #5a67d8, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
     }
-    .method-name {
-      font-weight: 600;
-      font-size: 16px;
-      transition: var(--transition);
-    }
-    .method.active .method-name {
-      color: var(--primary);
-    }
-    .payment-info-container {
-      max-height: 0;
+    main {
+      flex: 1 1 auto;
+      max-width: 40rem;
+      width: 100%;
+      margin: 1.5rem auto;
+      background: linear-gradient(135deg, #ffffff, #f1f5f9);
+      border-radius: 1rem;
+      box-shadow: 0 8px 16px rgba(90, 103, 216, 0.2);
+      display: flex;
+      flex-direction: column;
       overflow: hidden;
-      transition: max-height 0.5s ease-in-out;
-      margin-top: 0;
     }
-    .payment-info-container.active {
-      max-height: 1200px;
-      margin-top: 20px;
+    #chat-container {
+      flex: 1 1 auto;
+      overflow-y: auto;
+      padding: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: inherit;
     }
-    .payment-info {
-      background: white;
-      border-radius: 16px;
-      padding: 25px;
-      box-shadow: var(--shadow-md);
+    #chat-container p {
+      margin-top: 2rem;
       text-align: center;
-      position: relative;
-      overflow: hidden;
-      transition: var(--transition);
-      transform: translateY(20px);
-      opacity: 0;
-      display: none;
-    }
-    .payment-info.active {
-      transform: translateY(0);
-      opacity: 1;
-      display: block;
-    }
-    .payment-info::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-    }
-    .payment-info h2 {
-      font-size: 22px;
-      font-weight: 600;
-      margin-bottom: 20px;
-      color: var(--dark);
-    }
-    .payment-info-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-    .payment-info-header .method-icon {
-      width: 40px;
-      height: 40px;
-    }
-    .qr-container {
-      background-color: white;
-      border-radius: 12px;
-      padding: 20px;
-      display: inline-block;
-      margin-bottom: 20px;
-      box-shadow: var(--shadow-sm);
-      border: 1px dashed #ddd;
-      position: relative;
-      overflow: hidden;
-    }
-    .qr-image {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
-    .account-box {
-      background-color: rgba(67, 97, 238, 0.05);
-      border-radius: 12px;
-      padding: 25px;
-      margin: 20px auto;
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid rgba(67, 97, 238, 0.1);
-    }
-    .account-box::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 3px;
-      height: 100%;
-      background: linear-gradient(to bottom, var(--primary), var(--secondary));
-    }
-    .account-label {
-      font-size: 14px;
-      color: #777;
-      margin-bottom: 8px;
-      text-align: left;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .account-label i {
-      color: var(--primary);
-    }
-    .account-number {
-      font-size: 24px;
-      font-weight: 600;
-      margin: 8px 0 15px;
-      padding: 10px 15px;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      letter-spacing: 1px;
-      position: relative;
-    }
-    .account-number::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 3px;
-      height: 70%;
-      transform: translateY(-50%);
-      background: linear-gradient(to bottom, var(--primary), var(--secondary));
-      border-radius: 3px;
-    }
-    .account-name {
-      font-size: 16px;
+      color: #94a3b8;
       font-weight: 500;
-      color: #555;
-      margin-bottom: 20px;
-      text-align: left;
+      user-select: none;
+    }
+    .message {
+      display: flex;
+      margin-bottom: 1.25rem;
+      max-width: 85%;
+      word-wrap: break-word;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .message:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    .message.user {
+      margin-left: auto;
+      justify-content: flex-end;
+    }
+    .bubble {
+      padding: 0.75rem 1rem;
+      border-radius: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      max-width: 100%;
+      white-space: pre-wrap;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 0.75rem;
     }
-    .account-name i {
-      color: var(--primary);
+    .message.user .bubble {
+      background: linear-gradient(135deg, #7c3aed, #4c1d95);
+      color: #ffffff;
+      border-bottom-right-radius: 0.25rem;
+      box-shadow: 0 3px 10px rgba(124, 58, 237, 0.5);
     }
-    .btn {
-      background-color: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 10px;
-      padding: 12px 24px;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: 600;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+    .message.ai .bubble {
+      background: linear-gradient(135deg, #ffffff, #f1f5f9);
+      border: 1px solid #cbd5e1;
+      color: #1e293b;
+      border-bottom-left-radius: 0.25rem;
+    }
+    .message.error .bubble {
+      background: linear-gradient(135deg, #fef2f2, #fee2e2);
+      color: #b91c1c;
+      border: 1px solid #f87171;
+    }
+    .message.loading .bubble {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      color: #92400e;
       position: relative;
       overflow: hidden;
-      width: 100%;
+      opacity: 0.9;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
-    .btn::before {
-      content: '';
+    .message.loading .bubble::after {
+      content: "";
       position: absolute;
       top: 0;
-      left: 0;
+      left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
-      transform: translateX(-100%);
-      transition: transform 0.6s ease;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+      animation: shimmer 1.5s infinite;
     }
-    .btn:hover {
-      background-color: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
     }
-    .btn:hover::before {
-      transform: translateX(100%);
-    }
-    .btn:active {
-      transform: translateY(0);
-    }
-    .btn-save {
-      background-color: var(--secondary);
-    }
-    .btn-save:hover {
-      background-color: #05c090;
-      box-shadow: 0 5px 15px rgba(6, 214, 160, 0.3);
-    }
-    .btn-copy {
-      margin-top: 15px;
-    }
-    .footer {
-      text-align: center;
-      padding: 25px;
-      background-color: rgba(67, 97, 238, 0.05);
-      border-top: 1px solid rgba(67, 97, 238, 0.1);
-      font-size: 14px;
-      color: #777;
-    }
-    .footer p {
+    #input-container {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      border-top: 1px solid #cbd5e1;
+      padding: 1rem;
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
     }
-    .footer i {
-      color: var(--primary);
+    #user-input {
+      flex: 1 1 auto;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      font-weight: 500;
+      border: 1px solid #cbd5e1;
+      border-radius: 0.75rem;
+      background-color: #ffffff;
+      color: #1e293b;
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
-    .toast {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%) translateY(20px);
-      background-color: rgba(33, 37, 41, 0.9);
-      color: white;
-      padding: 15px 30px;
-      border-radius: 50px;
-      font-size: 15px;
-      opacity: 0;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      pointer-events: none;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    #user-input::placeholder {
+      color: #94a3b8;
     }
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
+    #user-input:focus {
+      border-color: #5a67d8;
+      box-shadow: 0 0 8px rgba(90, 103, 216, 0.5);
     }
-    .toast i {
-      color: var(--secondary);
-    }
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(to right, rgba(67, 97, 238, 0.1), rgba(67, 97, 238, 0.2), rgba(67, 97, 238, 0.1));
-      margin: 20px 0;
-    }
-    .scroll-indicator {
-      width: 40px;
-      height: 40px;
-      background-color: white;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: var(--shadow-md);
-      margin: 20px auto 0;
-      animation: bounce 2s infinite;
+    #send-button {
+      background: linear-gradient(135deg, #5a67d8, #7c3aed);
+      border: none;
+      color: #ffffff;
+      padding: 0 1.25rem;
+      margin-left: 0.75rem;
+      border-radius: 0.75rem;
       cursor: pointer;
-      opacity: 1;
-      transition: opacity 0.3s ease;
-    }
-    .scroll-indicator.hidden {
-      opacity: 0;
-    }
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-      }
-      40% {
-        transform: translateY(-10px);
-      }
-      60% {
-        transform: translateY(-5px);
-      }
-    }
-    .payment-instructions {
-      margin-top: 20px;
-      text-align: left;
-    }
-    .payment-instructions h3 {
-      margin-bottom: 15px;
-      font-size: 18px;
-      text-align: center;
-      color: var(--primary);
-    }
-    .payment-instructions ol {
-      padding-left: 20px;
-    }
-    .payment-instructions li {
-      margin-bottom: 12px;
-      line-height: 1.5;
-    }
-    .loading-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(255, 255, 255, 0.95);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      transition: opacity 0.5s ease;
-    }
-    .loading-spinner {
-      width: 50px;
-      height: 50px;
-      border: 5px solid rgba(67, 97, 238, 0.2);
-      border-top-color: var(--primary);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-    .fade-out {
-      opacity: 0;
-      pointer-events: none;
-    }
-    .payment-badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 12px;
       font-weight: 600;
-      color: white;
-      z-index: 2;
-    }
-    .method[data-type="dana"] .payment-badge {
-      background-color: var(--dana);
-    }
-    .method-container {
-      position: relative;
-      transition: var(--transition);
-    }
-    .payment-info-container {
-      position: relative;
-    }
-    .payment-info-container::after {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 20px;
-      margin-top: 10px;
-      background: linear-gradient(to right, var(--primary-dark), var(--secondary));
-      opacity: 0;
-      border-radius: 10px;
-      transform: scaleX(0);
-      transition: transform 0.5s ease, opacity 0.5s ease;
-    }
-    .payment-info-container.active::after {
-      opacity: 0.1;
-      transform: scaleX(1);
-    }
-    .selected-method-indicator {
-      font-size: 14px;
-      color: var(--primary);
-      margin-bottom: 15px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: var(--transition);
+      gap: 0.5rem;
+      font-size: 1rem;
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     }
-    .selected-method-indicator.active {
-      opacity: 1;
-      transform: translateY(0);
+    #send-button:disabled {
+      background: linear-gradient(135deg, #9ca3af, #6b7280);
+      cursor: not-allowed;
+      color: #d1d5db;
     }
-    .account-box {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    #send-button:not(:disabled):hover {
+      background: linear-gradient(135deg, #7c3aed, #a855f7);
+      transform: scale(1.05);
+      box-shadow: 0 0 12px rgba(124, 58, 237, 0.6);
     }
-    .account-box:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
+    #chat-container::-webkit-scrollbar {
+      width: 8px;
+    }
+    #chat-container::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    #chat-container::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #cbd5e1, #94a3b8);
+      border-radius: 4px;
+    }
+    #chat-container::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #5a67d8, #7c3aed);
+    }
+    footer {
+      max-width: 40rem;
+      width: 100%;
+      margin: 0 auto 1.5rem auto;
+      text-align: center;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #475569;
+      user-select: none;
+    }
+    footer a {
+      color: #5a67d8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    footer a:hover,
+    footer a:focus {
+      text-decoration: underline;
+      color: #7c3aed;
+      outline: none;
+    }
+    @media (max-width: 480px) {
+      main {
+        margin: 1rem 0.5rem;
+      }
+      #send-button {
+        padding: 0 1rem;
+        font-size: 0.9rem;
+      }
+      header h1 {
+        font-size: 1.25rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="loading-overlay">
-    <div class="loading-spinner"></div>
-  </div>
-  <div class="container">
-    <div class="header">
-      <h1>PayEasy</h1>
-      <p>Choose your preferred payment method</p>
-    </div>
-    <div class="content">
-      <h2 class="section-title"><i class="fas fa-wallet"></i> Payment Methods</h2>
-      <div class="selected-method-indicator" id="selected-method-indicator">
-        <i class="fas fa-check-circle"></i> <span>Selected: </span><strong id="selected-method-name">None</strong>
-      </div>
-      <div class="payment-methods">
-        <div class="method" data-type="dana" onclick="selectMethod('dana')">
-          <span class="payment-badge">Popular</span>
-          <div class="method-icon">
-            <svg viewBox="0 0 60 60" width="60" height="60">
-              <rect width="60" height="60" rx="15" fill="#0081FF"/>
-              <rect x="15" y="22" width="30" height="25" rx="2" fill="white"/>
-              <rect x="15" y="13" width="30" height="9" rx="2" fill="#0081FF"/>
-              <path d="M22 32C22 30.3431 23.3431 29 25 29H35C36.6569 29 38 30.3431 38 32V35C38 36.1046 37.1046 37 36 37H24C22.8954 37 22 36.1046 22 35V32Z" fill="#0081FF"/>
-              <circle cx="30" cy="25" r="3" fill="#0081FF"/>
-            </svg>
-          </div>
-          <div class="method-name">DANA</div>
-        </div>
-        <div class="method" data-type="gopay" onclick="selectMethod('gopay')">
-          <div class="method-icon">
-            <svg viewBox="0 0 60 60" width="60" height="60">
-              <rect width="60" height="60" rx="15" fill="#00AA13"/>
-              <circle cx="30" cy="30" r="18" fill="white"/>
-              <path d="M23 26H37M23 30H37M23 34H32" stroke="#00AA13" stroke-width="3" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="method-name">GoPay</div>
-        </div>
-        <div class="method" data-type="ovo" onclick="selectMethod('ovo')">
-          <div class="method-icon">
-            <svg viewBox="0 0 60 60" width="60" height="60">
-              <rect width="60" height="60" rx="15" fill="#4C2F9B"/>
-              <circle cx="30" cy="23" r="10" fill="white"/>
-              <path d="M20 36C20 32.134 24.477 29 30 29C35.523 29 40 32.134 40 36V45H20V36Z" fill="white"/>
-            </svg>
-          </div>
-          <div class="method-name">OVO</div>
-        </div>
-        <div class="method" data-type="qris" onclick="selectMethod('qris')">
-          <div class="method-icon">
-            <svg viewBox="0 0 60 60" width="60" height="60">
-              <rect width="60" height="60" rx="15" fill="#EE1C25"/>
-              <rect x="12" y="12" width="36" height="36" rx="3" fill="white"/>
-              <text x="30" y="36" font-family="Arial" font-size="10" font-weight="bold" text-anchor="middle" fill="#EE1C25">LinkAja</text>
-              <text x="30" y="26" font-family="Arial" font-size="7" font-weight="bold" text-anchor="middle" fill="#EE1C25">QRIS</text>
-            </svg>
-          </div>
-          <div class="method-name">QRIS LinkAja</div>
-        </div>
-      </div>
-      <div id="scroll-indicator" class="scroll-indicator hidden" onclick="scrollToPaymentInfo()">
-        <i class="fas fa-chevron-down"></i>
-      </div>
-      <div class="payment-info-container" id="payment-info-container">
-        <div id="dana-info" class="payment-info">
-          <div class="payment-info-header">
-            <div class="method-icon">
-              <svg viewBox="0 0 60 60" width="40" height="40">
-                <rect width="60" height="60" rx="15" fill="#0081FF"/>
-                <rect x="15" y="22" width="30" height="25" rx="2" fill="white"/>
-                <rect x="15" y="13" width="30" height="9" rx="2" fill="#0081FF"/>
-                <path d="M22 32C22 30.3431 23.3431 29 25 29H35C36.6569 29 38 30.3431 38 32V35C38 36.1046 37.1046 37 36 37H24C22.8954 37 22 36.1046 22 35V32Z" fill="#0081FF"/>
-                <circle cx="30" cy="25" r="3" fill="#0081FF"/>
-              </svg>
-            </div>
-            <h2>DANA Payment Details</h2>
-          </div>
-          <div class="account-box">
-            <div class="account-label">
-              <i class="fas fa-phone"></i> DANA Number
-            </div>
-            <div class="account-number">0895396283291</div>
-            <div class="account-name">
-              <i class="fas fa-user"></i> Account Name: [NoName]
-            </div>
-            <button class="btn btn-copy" onclick="copyToClipboard('0895396283291')">
-              <i class="fas fa-copy"></i> Copy Number
-            </button>
-          </div>
-          <div class="divider"></div>
-          <div class="payment-instructions">
-            <h3>How to Pay with DANA</h3>
-            <ol>
-              <li>Open your DANA app</li>
-              <li>Tap "Send" or "Transfer"</li>
-              <li>Enter the number: <strong>0895396283291</strong></li>
-              <li>Enter the amount and confirm payment</li>
-              <li>Save the receipt for your records</li>
-            </ol>
-          </div>
-        </div>
-        <div id="gopay-info" class="payment-info">
-          <div class="payment-info-header">
-            <div class="method-icon">
-              <svg viewBox="0 0 60 60" width="40" height="40">
-                <rect width="60" height="60" rx="15" fill="#00AA13"/>
-                <circle cx="30" cy="30" r="18" fill="white"/>
-                <path d="M23 26H37M23 30H37M23 34H32" stroke="#00AA13" stroke-width="3" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h2>GoPay Payment Details</h2>
-          </div>
-          <div class="account-box">
-            <div class="account-label">
-              <i class="fas fa-phone"></i> GoPay Number
-            </div>
-            <div class="account-number">082276667988</div>
-            <div class="account-name">
-       <i class="fas fa-user"></i> Account Name: [NoName]
-            </div>
-            <button class="btn btn-copy" onclick="copyToClipboard('082276667988')">
-       <i class="fas fa-copy"></i> Copy Number
-            </button>
-          </div>
-          <div class="divider"></div>
-          <div class="payment-instructions">
-            <h3>How to Pay with GoPay</h3>
-            <ol>
-              <li>Open your Gojek app</li>
-              <li>Tap "Pay" or "Send"</li>
-              <li>Enter the number: <strong>082276667988</strong></li>
-              <li>Enter the amount and confirm payment</li>
-              <li>Wait for payment confirmation</li>
-            </ol>
-          </div>
-        </div>
-        <div id="ovo-info" class="payment-info">
-          <div class="payment-info-header">
-            <div class="method-icon">
-              <svg viewBox="0 0 60 60" width="40" height="40">
-                <rect width="60" height="60" rx="15" fill="#4C2F9B"/>
-                <circle cx="30" cy="23" r="10" fill="white"/>
-                <path d="M20 36C20 32.134 24.477 29 30 29C35.523 29 40 32.134 40 36V45H20V36Z" fill="white"/>
-              </svg>
-            </div>
-            <h2>OVO Payment Details</h2>
-          </div>
-          <div class="account-box">
-            <div class="account-label">
-              <i class="fas fa-phone"></i> OVO Number
-            </div>
-            <div class="account-number">Ga Ada</div>
-            <div class="account-name">
-              <i class="fas fa-user"></i> Account Name: kaizel kazami
-            </div>
-            <button class="btn btn-copy" onclick="copyToClipboard('Batu Di Bilang Ga ada')">
-              <i class="fas fa-copy"></i> Copy Number
-            </button>
-          </div>
-          <div class="divider"></div>
-          <div class="payment-instructions">
-            <h3>How to Pay with OVO</h3>
-            <ol>
-              <li>Open your OVO app</li>
-              <li>Tap "Transfer"</li>
-              <li>Enter the number: <strong>Ga Ada</strong></li>
-              <li>Enter the amount and confirm payment</li>
-              <li>Check payment status in transaction history</li>
-            </ol>
-          </div>
-        </div>
-        <div id="qris-info" class="payment-info">
-          <div class="payment-info-header">
-            <div class="method-icon">
-              <svg viewBox="0 0 60 60" width="40" height="40">
-                <rect width="60" height="60" rx="15" fill="#EE1C25"/>
-                <rect x="12" y="12" width="36" height="36" rx="3" fill="white"/>
-                <text x="30" y="36" font-family="Arial" font-size="10" font-weight="bold" text-anchor="middle" fill="#EE1C25">LinkAja</text>
-                <text x="30" y="26" font-family="Arial" font-size="7" font-weight="bold" text-anchor="middle" fill="#EE1C25">QRIS</text>
-              </svg>
-            </div>
-            <h2>QRIS LinkAja Payment Details</h2>
-          </div>
-          <div class="qr-container">
-            <img class="qr-image" src="/api/placeholder/240/240" alt="QRIS Payment QR Code">
-          </div>
-          <div class="account-box">
-            <div class="account-label">
-              <i class="fas fa-qrcode"></i> QRIS ID
-            </div>
-            <div class="account-number">GaAda</div>
-            <div class="account-name">
-              <i class="fas fa-user"></i> Merchant: PayEasy Indonesia
-            </div>
-            <button class="btn btn-copy" onclick="copyToClipboard('Batu Di Bilang Ga Ada')">
-              <i class="fas fa-copy"></i> Copy ID
-            </button>
-          </div>
-          <div class="divider"></div>
-          <div class="payment-instructions">
-            <h3>How to Pay with QRIS LinkAja</h3>
-            <ol>
-              <li>Open your LinkAja app or any banking app that supports QRIS</li>
-              <li>Select "Scan QR" or "QRIS" option</li>
-              <li>Scan the QR code above</li>
-              <li>Enter the amount and confirm payment</li>
-              <li>Keep the transaction receipt for verification</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-      <button id="confirm-button" class="btn" style="margin-top: 30px; display: none;">
-        <i class="fas fa-check-circle"></i> Confirm Payment
+  <header>
+    <h1>lynea AI Chat Bot</h1>
+  </header>
+
+  <main>
+    <section id="chat-container" aria-live="polite" aria-relevant="additions">
+      <p>
+        Welcome to AI Chat! 🤖<br />
+        Start typing below to chat.
+      </p>
+    </section>
+
+    <form id="input-container" aria-label="Send message form" onsubmit="return false;">
+      <input
+        type="text"
+        id="user-input"
+        placeholder="Type your message here..."
+        autocomplete="off"
+        aria-label="Message input"
+        required
+        spellcheck="false"
+      />
+      <button id="send-button" type="submit" aria-label="Send message" disabled>
+        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+        Send
       </button>
-    </div>
-    <div class="footer">
-      <p><i class="fas fa-shield-alt"></i> Secure Payment Processing by PayEasy</p>
-    </div>
-  </div>
-  <div class="toast" id="toast">
-    <i class="fas fa-check-circle"></i>
-    <span id="toast-message"></span>
-  </div>
+    </form>
+  </main>
+
+  <footer>
+    by <span style="font-weight:600;">kai</span>  |  thanks to API <a href="https://nekorinn.my.id" target="_blank" rel="noopener noreferrer">nekorinn</a>
+  </footer>
+
   <script>
-    window.addEventListener('load', function() {
-      setTimeout(function() {
-        document.querySelector('.loading-overlay').classList.add('fade-out');
-        setTimeout(function() {
-          document.querySelector('.loading-overlay').style.display = 'none';
-        }, 500);
-      }, 800);
-    });
+    (() => {
+      const chatContainer = document.getElementById('chat-container');
+      const userInput = document.getElementById('user-input');
+      const sendButton = document.getElementById('send-button');
 //chanell:https://whatsapp.com/channel/0029VanrndJICVfcrjFr3x2R//
-    let selectedMethod = null;
- 
-    function selectMethod(method) {
-      document.querySelectorAll('.method').forEach(function(el) {
-        el.classList.remove('active');
+      userInput.addEventListener('input', () => {
+        sendButton.disabled = userInput.value.trim().length === 0;
       });
-      document.querySelectorAll('.payment-info').forEach(function(el) {
-        el.classList.remove('active');
+
+      function addMessage(content, type) {
+        const welcome = chatContainer.querySelector('p');
+        if (welcome) welcome.remove();
+
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message', type);
+        messageDiv.setAttribute('role', 'article');
+        messageDiv.setAttribute('aria-label', type === 'user' ? 'User message' : type === 'ai' ? 'AI message' : 'System message');
+
+        const bubble = document.createElement('div');
+        bubble.classList.add('bubble');
+//chanell:https://whatsapp.com/channel/0029VanrndJICVfcrjFr3x2R//
+        if (type === 'user') {
+          const icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+          icon.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+          icon.setAttribute('aria-hidden', 'true');
+          icon.setAttribute('focusable', 'false');
+          icon.setAttribute('width', '20');
+          icon.setAttribute('height', '20');
+          icon.setAttribute('fill', 'none');
+          icon.setAttribute('stroke', 'currentColor');
+          icon.setAttribute('stroke-width', '2');
+          icon.setAttribute('stroke-linecap', 'round');
+          icon.setAttribute('stroke-linejoin', 'round');
+          icon.setAttribute('viewBox', '0 0 24 24');
+          icon.innerHTML = '<line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>';
+          bubble.appendChild(icon);
+          bubble.appendChild(document.createTextNode(content));
+        } else if (type === 'ai') {
+          const icon = document.createElement('img');
+          icon.setAttribute('src', 'https://img.icons8.com/ios-filled/20/000000/bot.png');
+          icon.setAttribute('alt', 'AI robot icon');
+          icon.style.width = '20px';
+          icon.style.height = '20px';
+          icon.style.flexShrink = '0';
+          bubble.appendChild(icon);
+          bubble.appendChild(document.createTextNode(content));
+        } else {
+          bubble.textContent = content;
+        }
+//chanell:https://whatsapp.com/channel/0029VanrndJICVfcrjFr3x2R//
+        messageDiv.appendChild(bubble);
+        chatContainer.appendChild(messageDiv);
+
+        chatContainer.scrollTo({
+          top: chatContainer.scrollHeight,
+          behavior: 'smooth',
+        });
+      }
+
+      async function sendMessage() {
+        const message = userInput.value.trim();
+        if (!message) return;
+
+        addMessage(message, 'user');
+        userInput.value = '';
+        sendButton.disabled = true;
+        userInput.focus();
+
+        addMessage('Thinking...', 'loading');
+
+        try {
+          const apiUrl = `https://api.nekorinn.my.id/ai/gemini?text=${encodeURIComponent(message)}`;
+          const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(apiUrl)}`;
+
+          const response = await fetch(proxyUrl, {
+            method: 'GET',
+            headers: {
+              Accept: 'application/json',
+            },
+          });
+//chanell:https://whatsapp.com/channel/0029VanrndJICVfcrjFr3x2R//
+          const data = await response.json();
+
+          const loadingElements = chatContainer.querySelectorAll('.message.loading');
+          if (loadingElements.length) {
+            loadingElements[loadingElements.length - 1].remove();
+          }
+
+          if (data.status && data.statusCode === 200) {
+            addMessage(data.result, 'ai');
+          } else {
+            addMessage(`Sorry, I couldn't process your request. (Status: ${data.statusCode || 'unknown'})`, 'error');
+          }
+        } catch (error) {
+          const loadingElements = chatContainer.querySelectorAll('.message.loading');
+          if (loadingElements.length) {
+            loadingElements[loadingElements.length - 1].remove();
+          }
+
+          addMessage(`Connection error: ${error.message}`, 'error');
+
+          setTimeout(() => {
+            addMessage(
+              "Hello! I'm having trouble connecting to my AI service right now, but I'm here and ready to chat when the connection is restored. How can I help you today?",
+              'ai'
+            );
+          }, 500);
+        } finally {
+          sendButton.disabled = true;
+          userInput.focus();
+        }
+      }
+//chanell:https://whatsapp.com/channel/0029VanrndJICVfcrjFr3x2R//
+      sendButton.addEventListener('click', sendMessage);
+
+      userInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !sendButton.disabled) {
+          e.preventDefault();
+          sendMessage();
+        }
       });
-      document.querySelector('.method[data-type="' + method + '"]').classList.add('active');
-      document.getElementById(method + '-info').classList.add('active');
-      document.getElementById('payment-info-container').classList.add('active');
-      document.getElementById('confirm-button').style.display = 'flex';
-      document.getElementById('scroll-indicator').classList.remove('hidden');
-      const indicator = document.getElementById('selected-method-indicator');
-      const methodName = document.getElementById('selected-method-name');
-      indicator.classList.add('active');
-      methodName.textContent = document.querySelector('.method[data-type="' + method + '"] .method-name').textContent;
-      selectedMethod = method;
-      setTimeout(function() {
-        scrollToPaymentInfo();
-      }, 300);
-    }
-//chanell:https://whatsapp.com/channel/0029VanrndJICVfcrjFr3x2R//
-    function scrollToPaymentInfo() {
-      document.getElementById('payment-info-container').scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-      setTimeout(function() {
-        document.getElementById('scroll-indicator').classList.add('hidden');
-      }, 500);
-    }
-//chanell:https://whatsapp.com/channel/0029VanrndJICVfcrjFr3x2R//
-    function copyToClipboard(text) {
-      const input = document.createElement('input');
-      input.value = text;
-      document.body.appendChild(input);
-      input.select();
-      document.execCommand('copy');
-      document.body.removeChild(input);
-      showToast('Number copied to clipboard!');
-    }
-//chanell:https://whatsapp.com/channel/0029VanrndJICVfcrjFr3x2R//
-    function showToast(message) {
-      const toast = document.getElementById('toast');
-      const toastMessage = document.getElementById('toast-message');
-      toastMessage.textContent = message;
-      toast.classList.add('show');
-      setTimeout(function() {
-        toast.classList.remove('show');
-      }, 3000);
-    }
-//chanell:https://whatsapp.com/channel/0029VanrndJICVfcrjFr3x2R//
-    document.getElementById('confirm-button').addEventListener('click', function() {
-      if (!selectedMethod) return showToast('Please select a payment method first.');
-   //chanell:https://whatsapp.com/channel/0029VanrndJICVfcrjFr3x2R//   
-      const phoneNumber = document.querySelector('.payment-info.active .account-number').textContent.replace(/-/g, '');
-      window.location.href = `tel:${phoneNumber}`;
-    });
+
+      userInput.focus();
+    })();
   </script>
 </body>
-</html
+</html>
